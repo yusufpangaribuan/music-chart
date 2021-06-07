@@ -1,0 +1,152 @@
+{
+	"info": {
+		"name": "lp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testing123\",\n    \"password\": \"test\",\n    \"full_name\": \"testing\",\n    \"hobby\": \"koding\",\n    \"gender\": \"pria\",\n    \"address\": \"tangsel\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/lp/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"lp",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Music Chart",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjMwODY2NTMsIlVzZXJJRCI6M30.VJe9zAmYPLm14tqhchmeVWCDocxtIM-Jyzq_UzyNd4A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/lp/music-chart",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"lp",
+						"music-chart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Favorite",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjMwODY2NTMsIlVzZXJJRCI6M30.VJe9zAmYPLm14tqhchmeVWCDocxtIM-Jyzq_UzyNd4A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/lp/music-chart/favorite/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"lp",
+						"music-chart",
+						"favorite",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testing123\",\n    \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/lp/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"lp",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Detail Music Chart",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjMwODY2NTMsIlVzZXJJRCI6M30.VJe9zAmYPLm14tqhchmeVWCDocxtIM-Jyzq_UzyNd4A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/lp/music-chart/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"lp",
+						"music-chart",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

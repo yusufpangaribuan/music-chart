@@ -25,11 +25,13 @@ func (h *handler) Favorite(c echo.Context) (err error) {
 		resp.Error = err.Error()
 		resp.Status = http.StatusBadRequest
 		resp.ProcessTime = util.Float64ToString(time.Since(start).Seconds())
-		return c.JSON(http.StatusInternalServerError, resp)
+		return c.JSON(http.StatusBadRequest, resp)
 	}
 
+	ctx := handleEchoToContext(c, "userInfo")
+
 	// Sent Data to UseCase and get process result
-	res, httpCode, err := h.ucs.UcFavorite.SetFavorite(util.EchoToContext(c, "userInfo"), uID)
+	res, httpCode, err := h.ucs.UcFavorite.SetFavorite(ctx, uID)
 	if err != nil {
 		resp.Error = err.Error()
 		resp.Status = httpCode

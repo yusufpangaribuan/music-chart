@@ -6,7 +6,7 @@ import (
 
 // LoginReq struct
 type LoginReq struct {
-	UserName string `json:"email"`
+	UserName string `json:"username"`
 	Password string `json:"password"`
 }
 

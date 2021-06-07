@@ -19,10 +19,12 @@ func (h *handler) GetMusicChart(c echo.Context) (err error) {
 	}
 
 	// Bind Request
-	qParam := util.BindQueryParams(c.Request())
+	qParam := handleBindQueryParams(c.Request())
+
+	ctx := handleEchoToContext(c, "userInfo")
 
 	// Sent Data to UseCase and get process result
-	res, err := h.ucs.UcMusic.GetAll(util.EchoToContext(c, "userInfo"), qParam)
+	res, err := h.ucs.UcMusic.GetAll(ctx, qParam)
 	if err != nil {
 		resp.Error = err.Error()
 		resp.Status = http.StatusInternalServerError
@@ -52,11 +54,13 @@ func (h *handler) GetMusicChartDetail(c echo.Context) (err error) {
 		resp.Error = err.Error()
 		resp.Status = http.StatusBadRequest
 		resp.ProcessTime = util.Float64ToString(time.Since(start).Seconds())
-		return c.JSON(http.StatusInternalServerError, resp)
+		return c.JSON(http.StatusBadRequest, resp)
 	}
 
+	ctx := handleEchoToContext(c, "userInfo")
+
 	// Sent Data to UseCase and get process result
-	res, httpCode, err := h.ucs.UcMusic.GetByID(util.EchoToContext(c, "userInfo"), uID)
+	res, httpCode, err := h.ucs.UcMusic.GetByID(ctx, uID)
 	if err != nil {
 		resp.Error = err.Error()
 		resp.Status = httpCode

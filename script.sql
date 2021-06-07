@@ -1,5 +1,3 @@
-CREATE DATABASE `lp` /*!40100 DEFAULT CHARACTER SET latin1 */;
-
 -- lp.favorite definition
 
 CREATE TABLE `favorite` (

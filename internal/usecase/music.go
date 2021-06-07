@@ -53,9 +53,8 @@ func (m *MusicUsecaseImpl) GetByID(ctx context.Context, id uint64) (res *models.
 
 // GetAll this function call music repo to get all music data
 func (m *MusicUsecaseImpl) GetAll(ctx context.Context, params models.BasicSelectParams) (res *models.GetAllResponse, err error) {
-	userInfo, isValid := ctx.Value("userInfo").(models.UserInfo)
-	if !isValid {
-		err = errors.New("struct not valid")
+	userInfo, err := handleGetUserInfo(ctx)
+	if err != nil {
 		return
 	}
 
